@@ -28,16 +28,16 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
-// router.post('/login', async (req, res) => {
-//   const { username, password } = req.body;
-//   const user = await User.findOne({ where: { username } });
-//   if (user && await bcrypt.compare(password, user.password)) {
-//     req.session.userId = user.id;
-//     res.status(200).json({ message: 'Login successful' });
-//   } else {
-//     res.status(401).json({ error: 'Invalid username or password' });
-//   }
-// });
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ where: { email } });
+  if (user && await bcrypt.compare(password, user.password_hash)) {
+    res.status(200).json({ message: 'Login successful' });
+    console.log(`${user.username}님, 반가워요!`);
+  } else {
+    res.status(401).json({ error: 'Invalid username or password' });
+  }
+});
 
 // router.post('/logout', (req, res) => {
 //   req.session.destroy();
