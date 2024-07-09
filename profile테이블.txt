@@ -1,0 +1,7 @@
+profile 테이블
+user_id INT, - 왜래키
+nickname VARCHAR(50) NOT NULL,
+intro TEXT,
+profile_img TEXT,
+achievement_count INT DEFAULT 0 (뱃지 개수, 달성한 챌린지 개수),
+FOREIGN KEY (user_id) REFERENCES user(user_id);

@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const {sequelize, User } = require('./models');
+const {sequelize, User, Profile, Challenge, ChallengeParticipants, ChallengeRecord } = require('./models');
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(express.json());
 app.get('/users', async(req, res) => {
     try{
         const users = await User.findAll();
-        res.json(books);
+        res.json(users);
     } catch (error) {
         res.status(500).json({error: 'Failed to fetch users'});
     }
@@ -18,7 +18,7 @@ app.get('/users', async(req, res) => {
 
 // app.get('/customers', async(req, res) => {
 //     try {
-//         const customers = await Customer.findAll();
+//         const customers = await Profile.findAll();
 //         res.json(customers);
 //       } catch (error) {
 //         res.status(500).json({ error: 'Failed to fetch customers' });
@@ -36,7 +36,7 @@ app.get('/users', async(req, res) => {
 //     }
 // });
 
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 3001;
   app.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
     // await sequelize.sync({ force: true }); // 새로 초기화

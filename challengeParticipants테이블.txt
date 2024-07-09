@@ -1,0 +1,9 @@
+challengeParticipants 테이블
+
+id INT AUTO_INCREMENT PRIMARY KEY - 참여자 고유 식별번호
+
+challenge_id INT - 참여하는 챌린지 ID(challenge테이블 외래키)
+
+user_id INT - 참여자 ID(user테이블 외래키)
+
+start_date DATE - 참여자가 챌린지를 시작한 날짜

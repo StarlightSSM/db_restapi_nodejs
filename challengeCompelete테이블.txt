@@ -1,0 +1,7 @@
+challengeComplete테이블
+
+id INT AUTO_INCREMENT PRIMARY KEY
+
+participant_id INT (challengeParticipants의 id외래키)
+
+exercise_date DATE(운동날짜 기록용→마이페이지 챌린지 기록할때 쓰임)
