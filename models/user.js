@@ -24,9 +24,9 @@ class User extends Model {
                 type:DataTypes.STRING(255), 
                 allowNull:false},
             gender:{
-                type:DataTypes.ENUM('male', 'female'),
+                type:DataTypes.ENUM('남성', '여성'),
                 allowNull: true,
-                defaultValue: 'male'},
+                defaultValue: '남성'},
             height:{
                 type:DataTypes.TEXT, 
                 allowNull:false},
@@ -43,9 +43,9 @@ class User extends Model {
                 type:DataTypes.TEXT, 
                 allowNull:true},
             interests:{
-                type:DataTypes.ENUM('running', 'weight training', 'bike', 'diet'),
+                type:DataTypes.ENUM('런닝', '헬스', '자전거', '다이어트'),
                 allowNull: false,
-                defaultValue: 'running'},
+                defaultValue: '런닝'},
             current_challenge_id:{
                 type:DataTypes.INTEGER, 
                 allowNull:true},

@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require("./routes/auth");
 const path = require("path");
-const {sequelize, User, Profile, Challenge, ChallengeParticipants, ChallengeRecord } = require('./models');
+const {sequelize, User, Profile, Challenge, ChallengeParticipants, ChallengeRecord, Post, Comment } = require('./models');
 
 const app = express();
 
