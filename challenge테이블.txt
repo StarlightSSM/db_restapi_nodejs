@@ -1,11 +1,11 @@
-challenge 테이블
-
-challenge_id INT AUTO_INCREMENT PRIMARY KEY - 챌린지 고유 식별번호
-
-challengename VARCHAR(255) - 챌린지 이름
-
-challenge_description TEXT - 챌린지 설명
-
-target_days INT - 챌린지 달성 조건(날짜)
-
-participant_count - 챌린지 참여인원
+Challenge (챌린지)
+CREATE TABLE Challenge (
+    challenge_id INT AUTO_INCREMENT PRIMARY KEY,
+    challenge_name VARCHAR(255) NOT NULL,
+    description TEXT,
+    target_days INT,
+    participant_count INT,
+    start_date DATE,
+    end_date DATE,
+    reward VARCHAR(255)
+);

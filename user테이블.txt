@@ -1,13 +1,16 @@
-user_id INT AUTO_INCREMENT PRIMARY KEY - 사용자 고유 식별번호 (외래키 설정 가능)
-username VARCHAR(50) NOT NULL - 사용자 이름
-password_hash VARCHAR(255) NOT NULL - 비밀번호 암호화
-email VARCHAR(100) NOT NULL UNIQUE - 사용자 이메일(ID)
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP - 계정 생성 날짜 및 시간
-gender ENUM('male', 'female') - 성별
-height TEXT - 키
-weight TEXT - 몸무게
-age TEXT - 나이
-goals TEXT - 사용자 목표 (자유 형식 텍스트)
-interests TEXT - 관심 있는 운동 목록 
-current_challenge_id INT - 현재 참가 중인 챌린지 ID (외래키로 설정 가능)
-challenge_progress TEXT - 챌린지 진행 상황 (자유 형식 텍스트)
+User (사용자)
+CREATE TABLE User (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    gender ENUM ('male', 'female') DEFAULT 'male',
+    height TEXT,
+    weight TEXT,
+    age TEXT,
+    profile_picture VARCHAR(255),
+    goal TEXT,
+    interests ENUM ('running', 'weight training', 'bike', 'diet') DEFAULT 'running',
+    current_challenge_id INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
