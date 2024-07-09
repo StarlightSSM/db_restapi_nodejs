@@ -1,11 +1,21 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const authRoutes = require("./routes/auth");
+const path = require("path");
 const {sequelize, User, Profile, Challenge, ChallengeParticipants, ChallengeRecord } = require('./models');
 
 const app = express();
 
-app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors({
+  origin: "http://localhost:3000", // React 개발 서버 주소
+}));
 app.use(express.json());
+
+// Routes
+app.use("/auth", authRoutes);
 
 app.get('/users', async(req, res) => {
     try{
