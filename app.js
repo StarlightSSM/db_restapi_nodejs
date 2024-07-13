@@ -2,8 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require("./routes/auth");
-const path = require("path");
+const profileRoutes = require("./routes/myPage");
+const challengeRoutes = require('./routes/challenge');
+const participantRoutes = require('./routes/participant');
+
 const {sequelize, User, Profile, Challenge, ChallengeParticipants, ChallengeRecord, Post, Comment } = require('./models');
+const path = require("path");
 
 const app = express();
 
@@ -25,6 +29,11 @@ app.get('/users', async(req, res) => {
         res.status(500).json({error: 'Failed to fetch users'});
     }
 });
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // 정적파일 제공을 위한 미들웨어 등록
+app.use('/profiles', profileRoutes);
+app.use('/challenges',challengeRoutes);
+app.use('/participants',participantRoutes);
 
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, async () => {
