@@ -51,8 +51,7 @@ class User extends Model {
             created_at:{
                 type:DataTypes.DATE,
                 defaultValue:Sequelize.fn('now'),
-                allowNull:false,
-            },
+                allowNull:false},
         },{sequelize, modelName:"User", tableName:"user", paranoid:false, timestamps:false})
     }
     static associate(db){
