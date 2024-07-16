@@ -6,8 +6,7 @@ class Profile extends Model {
             profile_id:{
                 type:DataTypes.INTEGER,
                 autoIncrement: true,
-                primaryKey: true,
-            },
+                primaryKey: true},
             nickname:{
                 type:DataTypes.STRING(50), 
                 allowNull:false},

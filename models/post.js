@@ -6,9 +6,7 @@ class Post extends Model {
             post_id:{
                 type:DataTypes.INTEGER,
                 autoIncrement: true,
-                primaryKey: true,
-                allowNull: false
-            },
+                primaryKey: true},
             user_id:{
                 type:DataTypes.INTEGER,
                 allowNull:false},

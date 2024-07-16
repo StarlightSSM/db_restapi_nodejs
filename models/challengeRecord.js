@@ -6,15 +6,13 @@ class ChallengeRecord extends Model {
             compelete_id:{
                 type:DataTypes.INTEGER, 
                 primaryKey:true, 
-                autoIncrement:true,
-                allowNull:false},
+                autoIncrement:true},
             participant_id:{
                 type:DataTypes.INTEGER, 
                 allowNull:false},
             user_id:{
                 type:DataTypes.INTEGER,
-                allowNull:false
-            },
+                allowNull:false},
             exercise_date:{
                 type:DataTypes.DATE, 
                 allowNull:true},

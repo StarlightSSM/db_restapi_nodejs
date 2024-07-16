@@ -6,9 +6,7 @@ class Comment extends Model {
             comment_id:{
                 type:DataTypes.INTEGER,
                 autoIncrement: true,
-                primaryKey: true,
-                allowNull: false
-            },
+                primaryKey: true},
             post_id:{
                 type:DataTypes.INTEGER,
                 allowNull:false},

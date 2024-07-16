@@ -6,8 +6,7 @@ class ChallengeParticipants extends Model {
             id:{
                 type:DataTypes.INTEGER, 
                 primaryKey:true, 
-                autoIncrement:true,
-                allowNull:false},
+                autoIncrement:true},
             challenge_id:{
                 type:DataTypes.INTEGER, 
                 allowNull:false},
@@ -16,12 +15,10 @@ class ChallengeParticipants extends Model {
                 allowNull:false},
             progress:{
                 type:DataTypes.STRING(255),
-                allowNull:true
-            },
+                allowNull:true},
             completion_date:{
                 type:DataTypes.DATE,
-                allowNull:true
-            },
+                allowNull:true},
         },{sequelize, modelName:"ChallengeParticipants", tableName:"challengeParticipants", paranoid:false, timestamps:false})
     }
     static associate(models){
