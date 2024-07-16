@@ -22,7 +22,7 @@ class ChallengeParticipants extends Model {
                 type:DataTypes.DATE,
                 allowNull:true
             },
-        },{sequelize, modelName:"ChallengeParticipants", tableName:"challengeParticipants", paranoid:false, timestamps:false, charset:"utf8mb4", collate:"utf8mb4_general_ci",})
+        },{sequelize, modelName:"ChallengeParticipants", tableName:"challengeParticipants", paranoid:false, timestamps:false})
     }
     static associate(models){
         this.belongsTo(models.Challenge, {foreignKey:"challenge_id"});

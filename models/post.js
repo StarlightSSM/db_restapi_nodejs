@@ -22,7 +22,7 @@ class Post extends Model {
                 type:DataTypes.DATE,
                 defaultValue:Sequelize.fn('now'),
                 allowNull:false},
-        },{sequelize, modelName:"Post", tableName:"post", paranoid:false, timestamps:false, charset:"utf8mb4", collate:"utf8mb4_general_ci",})
+        },{sequelize, modelName:"Post", tableName:"post", paranoid:false, timestamps:false})
     }
     static associate(models){
         this.belongsTo(models.User, {foreignKey:"user_id"});

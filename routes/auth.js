@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/register', async (req, res, next) => {
   try {
-    const { name, email, password, gender, height, weight, age, interest } = req.body;
+    const { name, email, password, gender, height, weight, age, profile_picture, interest } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10); // 해시된 비밀번호 생성
 
     const newUser = await User.create({
@@ -17,6 +17,7 @@ router.post('/register', async (req, res, next) => {
       height,
       weight,
       age,
+      profile_picture,
       interests: interest,
       created_at: new Date()
     });
