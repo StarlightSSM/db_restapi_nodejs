@@ -15,6 +15,10 @@ class User extends Model {
                 type:DataTypes.STRING(50), 
                 unique: true, 
                 allowNull:false},
+            nickname:{
+                type:DataTypes.STRING(50), 
+                allowNull:true,
+                defaultValue: ""},
             email:{
                 type:DataTypes.STRING(100), 
                 unique: true, 
@@ -35,9 +39,10 @@ class User extends Model {
             age:{
                 type:DataTypes.TEXT, 
                 allowNull:true},
-            profile_picture:{
-                type:DataTypes.STRING(255),
-                allowNull:true},
+            profile_picture: {
+                type: DataTypes.STRING(255), // 수정: 문자열 타입으로 변경
+                allowNull: true, // 필요에 따라 allowNull 설정 변경
+                defaultValue: ''},
             goals:{
                 type:DataTypes.TEXT, 
                 allowNull:true},

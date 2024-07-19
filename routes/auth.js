@@ -6,11 +6,12 @@ const router = express.Router();
 
 router.post('/register', async (req, res, next) => {
   try {
-    const { name, email, password, gender, height, weight, age, profile_picture, interest } = req.body;
+    const { name, nickname, email, password, gender, height, weight, age, profile_picture, interest } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10); // 해시된 비밀번호 생성
 
     const newUser = await User.create({
       username: name,
+      nickname,
       email,
       password_hash: hashedPassword, // 해시된 비밀번호 저장
       gender,
@@ -23,7 +24,6 @@ router.post('/register', async (req, res, next) => {
     });
 
     res.status(201).json(newUser); // 생성된 사용자 객체 반환
-    res.json({ user_id: user_id});
   } catch (error) {
     console.error('Error creating new user:', error);
     res.status(500).json({ error: '회원가입 실패' });
