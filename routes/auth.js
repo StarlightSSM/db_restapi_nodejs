@@ -23,6 +23,7 @@ router.post('/register', async (req, res, next) => {
     });
 
     res.status(201).json(newUser); // 생성된 사용자 객체 반환
+    res.json({ user_id: user_id});
   } catch (error) {
     console.error('Error creating new user:', error);
     res.status(500).json({ error: '회원가입 실패' });
