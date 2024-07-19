@@ -21,7 +21,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use("/auth", authRoutes);
-app.use("/profile", profileRoutes); // Mount profile routes under /profile
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/api", profileRoutes); // Mount profile routes under /profile
 
 // Fetch all users
 app.get('/users', async (req, res) => {

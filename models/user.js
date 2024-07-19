@@ -43,14 +43,14 @@ class User extends Model {
                 type: DataTypes.STRING(255), // 수정: 문자열 타입으로 변경
                 allowNull: true, // 필요에 따라 allowNull 설정 변경
                 defaultValue: ''},
-            goals:{
+            goals:{                 // 예네 cmd에서 null로 뜸
                 type:DataTypes.TEXT, 
                 allowNull:true},
             interests:{
                 type:DataTypes.ENUM('런닝', '헬스', '자전거', '다이어트'),
                 allowNull: false,
                 defaultValue: '런닝'},
-            current_challenge_id:{
+            current_challenge_id:{  // 얘도 cmd에서 null로 뜸
                 type:DataTypes.INTEGER, 
                 allowNull:true},
             created_at:{
