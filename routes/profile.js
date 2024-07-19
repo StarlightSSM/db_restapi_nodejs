@@ -1,7 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const { User, Profile } = require('../models'); // Adjust according to your ORM and models
-
 const router = express.Router();
 
 // 사용자와 프로필 정보를 가져오는 API
@@ -51,36 +50,42 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.put('/update/:user_id', upload.single('profile_picture'), async (req, res) => {
-    const userId = req.params.user_id;
-    const { nickname, intro } = req.body;
-    const profilePicture = req.file ? req.file.path : null;
-  
-    try {
+  const userId = req.params.user_id;
+  const { nickname, intro } = req.body;
+  const profilePicture = req.file ? req.file.filename : null;
+
+  try {
+      // Check if the profile exists
+      const profile = await Profile.findOne({ where: { user_id: userId } });
+      if (!profile) {
+          return res.status(404).json({ error: 'Profile not found' });
+      }
+
+      // Update profile fields
+      if (intro) profile.intro = intro;
+
+      // Save updated profile data
+      await profile.save();
+
       // Check if the user exists
       const user = await User.findByPk(userId);
       if (!user) {
-        return res.status(404).json({ error: 'User not found' });
+          return res.status(404).json({ error: 'User not found' });
       }
-  
-      // Check if the profile exists
-      const profile = await Profile.findOne({ where: { userId } });
-      if (!profile) {
-        return res.status(404).json({ error: 'Profile not found' });
-      }
-  
-      // Update profile fields
-      profile.nickname = nickname;
-      profile.intro = intro;
-      if (profilePicture) {
-        profile.profile_picture = profilePicture;
-      }
-      await profile.save();
-  
-      res.json(profile);
-    } catch (error) {
+
+      // Update user fields
+      if (nickname) user.nickname = nickname;
+      if (profilePicture) user.profile_picture = profilePicture;
+
+      // Save updated user data
+      await user.save();
+
+      // Send back updated profile and user data
+      res.json({ user, profile });
+  } catch (error) {
       console.error('Failed to update profile:', error);
       res.status(500).json({ error: 'Failed to update profile' });
-    }
+  }
 });
 
 module.exports = router;
